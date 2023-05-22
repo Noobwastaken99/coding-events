@@ -1,10 +1,12 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
 public abstract class AbstractEntity {
     @Id
     @GeneratedValue
@@ -24,6 +26,6 @@ public abstract class AbstractEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 }
