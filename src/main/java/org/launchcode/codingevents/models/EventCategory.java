@@ -1,24 +1,26 @@
 package org.launchcode.codingevents.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.Size;
 import java.util.Objects;
 
+@Entity
 public class EventCategory {
 
+    @Id
+    @GeneratedValue
     private int id;
-    private static int nextId = 1;
+
     @Size(min=3, message="Name must be at least 3 characters long")
     private String name;
 
-    public EventCategory(String name) {
-        this();
+    public EventCategory(@Size(min = 3, message = "Name must be at least 3 characters long") String name) {
         this.name = name;
     }
 
-    public EventCategory() {
-        this.id= nextId;
-        nextId++;
-    }
+    public EventCategory() {}
 
     public String getName() {
         return name;
@@ -42,11 +44,11 @@ public class EventCategory {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EventCategory that = (EventCategory) o;
-        return getId() == that.getId();
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId());
+        return Objects.hash(id);
     }
 }
