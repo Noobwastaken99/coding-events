@@ -11,10 +11,6 @@ import java.util.Objects;
 @Entity
 public class Event extends AbstractEntity{
 
-//    @Id
-//    @GeneratedValue
-//    private int id;
-
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String name;
@@ -60,9 +56,6 @@ public class Event extends AbstractEntity{
         this.type = type;
     }
 
-//    public int getId() {
-//        return id;
-//    }
 
     public String getContactEmail() {
         return contactEmail;
@@ -77,16 +70,4 @@ public class Event extends AbstractEntity{
         return name;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Event event = (Event) o;
-//        return id == event.id;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id);
-//    }
 }
