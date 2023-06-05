@@ -1,5 +1,7 @@
 package org.launchcode.codingevents.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
@@ -16,11 +18,15 @@ public class User extends AbstractEntity{
 
     public User(String username, String password) {
         this.username = username;
-        this.pwHash = password;
+        this.pwHash = encoder.encode(password);
     }
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
 
 }
